@@ -1,0 +1,48 @@
+<nav class="navbar navbar-default" ng-controller="HomeController">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/#/">
+        <img src="logo2.png" alt="UmmaSpot Logo">
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" ng-class="{'in':!navCollapsed}">
+
+      <form class="navbar-form navbar-left" ng-submit="searchCity(loc)" role="search">
+        <div class="form-group">
+         Find a spot in
+          <input type="text" class="form-control" ng-model="loc" 
+          typeahead="city for city in cities | filter:$viewValue | limitTo:8" 
+          typeahead-on-select='searchCity($item)'
+          placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right" ng-if="!isAuthenticated()">
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" ng-click="loginModal('sm')">Login</a>
+        </li>
+        <li class="dropdown" ng-if="isAuthenticated()">
+            <a href="#/users/edit/profile" class="dropdown-toggle">My Profile </a>
+        </li>
+        <li><a ng-click="loginModal('sm')" href="#">Submit a Spot</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right" ng-if="isAuthenticated()">
+        <li class="dropdown">
+            <a href="#/users/edit/profile" class="dropdown-toggle">My Profile </a>
+        </li>
+        <li><a href="#/listing/new">Submit a Spot</a></li>
+        <li><a ng-click="logout()">Sign out</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

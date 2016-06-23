@@ -1,0 +1,35 @@
+<ng-include src="'angular/_shared/_top-nav.html'"></ng-include>
+<ng-include src="'angular/_shared/dashboard.html'"></ng-include>
+
+<div class="container page reservation-page">
+	<div ng-if="request" class="alert alert-success">
+		<strong>Congrats!</strong> You have officially requested to book your trip. Please click on the trip and send a friendly message to your host explaining who you are and why you plan to visit.
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="panel-title">
+				{{pageName}}
+			</div>
+		</div>
+		<div class="table-responsive">
+			<table class="table panel-body">
+				<thead>
+					<tr>
+						<th>Status</th>
+						<th>Dates</th>
+						<th>{{recipient}}</th>
+						<th>Location</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="result in results | orderBy:'checkin'" ng-click="inbox(result.id)">
+						<td><span class="badge">{{result.status}}</span></td>
+						<td>{{result.checkin | date : 'MMM, dd'}} - {{result.checkout | date}}</td>
+						<td>{{result.name}}</td>
+						<td>{{result.address}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,151 @@
+<ng-include src="'angular/_shared/_top-nav.html'"></ng-include>
+<ng-include src="'angular/_shared/dashboard.html'"></ng-include>
+
+<div class="container page edit-listing">
+	<div class="row">	
+		<!-- <div class="col-md-3 hidden-xs">
+			<ng-include src="'angular/_shared/listing-nav.html'"></ng-include>	
+		</div> -->
+		<div class="col-md-9">
+			<!-- Title -->
+			<section>
+				<h3>Title</h3>
+				<div class="row">
+					<div class="col-md-4">
+						<input ng-model="list.title" class="form-control" type="text">
+					</div>
+				</div>
+			</section>
+			<!-- Calendar -->
+			<section id="calendar-section">	
+				<h3>Calendar</h3>
+				<p></p>
+				<div id="calendar"></div> 
+			</section>
+			<!-- Pricing -->
+			<section id="pricing">
+				<h3>Set A Price for Your Space</h3>
+				<p>You can set a price based on your location, space, amenities, and your hospitality.</p>
+				<div class="row">	
+					<div class="col-md-4 col-middle">
+				      <div class="input-group">
+				        <span class="input-group-addon">$</span>
+				        <input class="form-control" type="integer" ng-model="list.price_cents">
+				      </div>
+				    </div>
+				</div>
+			</section>
+
+			<!-- photos -->
+			<section id="photos">
+			<h3>Photos</h3>
+			<div id="direct_upload" 
+		    ng-file-drop
+		    ng-file-drag-over-class="dragOverClass($event)"
+		    ng-model="files"
+		    ng-multiple="true">
+		    <p>You can also drag and drop an image file into the dashed area.</p>
+		    <form>
+		        <div class="form_line">
+		            <label>Image:</label>
+		            <div class="form_controls">
+		                <div class="upload_button_holder">
+		                    <div href="#" class="upload_button" ng-file-select ng-multiple="true" title="upload" resetOnClick="true" ng-model="files">Upload</div>
+		                </div>
+		                
+		            </div>
+		        </div>
+		    </form>
+		    <h5>Status</h5>
+		    <div class="file" ng-repeat="file in files">
+		        <div class="status">{{file.status}}</div>
+		        <div class="progress-bar">
+		          <div class="progress" style="width: {{file.progress}}%" ng-init="progress=0"></div>
+		        </div>
+		    </div>
+
+			<ul class="listings-photos">
+				<li ng-repeat="image in list.images">
+					<span ng-click="removeImage(index)"><i class="glyphicon glyphicon-remove-circle"></i></span>
+					<img ng-src="{{image.url}}" alt="" height="150" width="180">
+				</li>
+			</ul>
+			    
+			</div>
+			</section>
+			<!-- Basics -->
+			<section id="basics">
+
+			</section>
+
+			<!-- Description -->
+			<section id="description">
+				<h3>Talk About Your Space</h3>
+				<p>What is unique about your place? What do you like about it?</p>
+				<div class="row">	
+					<div class="col-md-8">
+						<textarea ng-model="list.summary" class="form-control" cols="30" rows="10"></textarea>
+					</div>
+				</div>
+				<!-- Home Type -->
+				<h3>Type</h3>
+				<p>What will you be renting out?</p>
+				<div class="row">	
+					<div class="col-md-6">
+						<select ng-model="list.home_type" class="form-control">
+							<option value="One Bedroom">One Bedroom</option>
+							<option value="Entire Home">Entire Home</option>
+							<option value="Family">Family Home</option>
+							<option value="Couch">Couch</option>
+						</select>
+					</div>
+				</div>
+			</section>
+				
+			<!-- Location -->
+			<section id="location">
+				<h3>City</h3>
+				<p>This is important to narrowing down the search for users.</p>
+				<div class="row">	
+					<div class="col-md-6">
+						<label for="Address">City</label>
+						<input type="text" class="form-control" ng-model="list.city">
+					</div>
+				</div>
+
+				<h3>Set Your Address</h3>
+				<p>We do not share your full address until after the user has booked.</p>
+				<div class="row">	
+					<div class="col-md-6">
+						<label for="Address">Address</label>
+						<input type="text" ng-model="list.address" placeholder="Address" typeahead="address for address in getLocation($viewValue)" class="form-control">
+					</div>
+				</div>
+			</section>
+
+			<!-- Amenities -->
+			<section id="amenities">	
+
+			</section>
+
+			<!-- status -->
+			<section ng-if="status">
+				<!-- Home Type -->
+				<h3>Status</h3>
+				<div class="row">	
+					<div class="col-md-6">
+						<select ng-model="list.status" class="form-control">
+							<option value="Listed">List</option>
+							<option value="Unlisted">Unlist</option>
+						</select>
+					</div>
+				</div>
+			</section>
+			<br>
+			<!-- Save -->
+			<section>
+				<button class="btn btn-lg btn-success" ng-click="updateList()">Submit</button>
+			</section>
+		</div>
+	</div>	
+</div>

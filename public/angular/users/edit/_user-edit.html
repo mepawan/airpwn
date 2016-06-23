@@ -1,0 +1,68 @@
+<ng-include src="'angular/_shared/_top-nav.html'"></ng-include>
+<ng-include src="'angular/_shared/dashboard.html'"></ng-include>
+
+<div class="container page">
+	<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.content}}</alert>
+	<form class="form-horizontal">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Profile Information
+			</div>
+			<div class="panel-body">
+			  <div class="form-group">
+			    <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+			    <div class="col-sm-10">
+			      <input type="input" class="form-control" id="inputEmail3" ng-model="user.name" placeholder="Full Name">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="inputPassword3" class="col-sm-2 control-label">Email</label>
+			    <div class="col-sm-10">
+			      <input type="input" class="form-control" id="inputPassword3" ng-model="user.email" placeholder="Email">
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label for="inputPassword3" class="col-sm-2 control-label">Gender</label>
+			    <div class="col-sm-10">
+			      	<select ng-model="user.gender" class="form-control">
+					  <option value="M">Male</option>
+					  <option value="F">Female</option>
+					</select>
+			    </div>
+			  </div>
+			  <div class="form-group">
+			  	<label for="" class="col-sm-2 control-label">Photo</label>
+			  	<div class="col-sm-5">
+				    <form>
+					    <div class="form_line">
+				            <div class="form_controls">
+				                <div class="upload_button_holder">
+				                    <div href="#" class="upload_button" ng-file-select title="upload" resetOnClick="true" ng-model="file" ng-change="upload()">Upload</div>
+				                </div>
+				            </div>
+				        </div>
+					 </form>
+				</div>
+				<div class="col-sm-5">
+					<img class="img-circle user-avatar" src="{{user.avatar}}" ng-model="user.avatar" alt="">
+				</div>
+			  </div>
+			 </div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				Payout Methods
+			</div>
+			<div class="panel-body">
+				
+			</div>
+		</div>
+				
+	  <div class="form-group">
+	    <div class="row">
+	      <button type="submit" ng-click="saveUser()" class="btn col-sm-10 col-sm-offset-2 btn-lg btn-default btn-success">Save</button>
+	    </div>
+	  </div>
+	</form>
+</div>

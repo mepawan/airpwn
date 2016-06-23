@@ -1,0 +1,129 @@
+<ng-include src="'angular/_shared/_top-nav.html'"></ng-include>
+<ng-include src="'angular/_shared/dashboard.html'"></ng-include>
+
+
+<div class="container">
+	<div class="row">
+		<div class="alert alert-info">
+			<p>The current status is: <strong>{{results.status}}</strong></p>
+		</div>
+		<div class="col-md-12">
+			<div ng-if="results.host_id === results.auth">
+				<h1>Reservations</h1>
+			</div>
+			<div ng-if="results.host_id !== results.auth">
+				<h1>Trip to {{results.city}}</h1>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-7">
+			<div class="panel panel-default">
+                <div class="panel-body chat-form">
+                    <textarea class="form-control" ng-model="inbox.body" rows="3"></textarea>
+                    <div class="pull-right">
+                    	<!-- Pending  -->
+                    	<div ng-if="results.host_id === results.auth && results.status == 'Pending'">
+                    		<button class="btn btn-default" ng-click="updateBooking('Approved')" type="submit">Approve</button>
+                    		<button class="btn btn-default" ng-click="updateBooking('Declined')" type="submit">Decline</button>
+                    	</div>
+                    	<div ng-if="results.host_id !== results.auth && results.status == 'Pending'">
+                    		<button class="btn btn-default" type="submit">Pending</button>
+                    	</div>
+                        <!-- Approved  -->
+                    	<div ng-if="results.host_id === results.auth && results.status === 'Approved'">
+                    		<button class="btn btn-default" type="submit">Approved</button>
+                    	</div>
+                    	<div ng-if="results.host_id !== results.auth && results.status === 'Approved'">
+                    		<button class="btn btn-default" ng-click="book()" type="submit">Book</button>
+                    	</div>
+
+                        <!-- Booked  -->
+                    	<div ng-if="results.status == 'Booked'">
+                    		<button class="btn btn-default btn-success" type="submit">Booked</button>
+                    	</div>
+                        <!-- Declined  -->
+                    	<div ng-if="results.status === 'Declined'">
+                    		<button class="btn btn-default btn-danger" type="submit">Declined</button>
+                    	</div>
+
+                    	<!-- Chat  -->
+                    	 <div>
+                        	<button class="btn btn-default" ng-click="submitChat(inbox)" type="submit">Send Message</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<div ng-repeat="message in results.messages" class="row chat-inbox">
+				<div class="col-md-1 col-sm-4">
+					<span>
+						<img class="img-circle" src="{{message.avatar}}">
+					</span>
+				</div>
+				<div class="col-md-10 col-sm-8">
+					<div class="chat-name row">
+						<div class="pull-left">
+								<h5>{{message.name}}</h5>
+						</div>
+						<div class="pull-right">
+							{{message.created_at}}
+						</div>
+					</div>
+					<div class="chat-body">
+						<p>{{message.content}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-4 col-md-offset-1">
+			<div class="row">
+				<div class="col-md-3">
+					<a href="#/user/{{result.host_id}}">
+						<img class="media-object img-circle" style="width: 80px; height: 80px;" src="{{results.avatar}}" data-holder-rendered="true">
+					</a>
+				</div>
+				<div class="col-md-7">
+					{{results.name}}
+				</div>
+			</div>
+			<div class="row">
+				<h3>Details</h3>
+				<div class="row">
+					<div class="col-md-3">
+						<strong>Address:</strong>
+					</div>
+					<div class="col-md-8">
+						{{results.address}}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<strong>Check In: </strong>
+					</div>
+					<div class="col-md-8">
+						{{results.checkin | date}}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<strong>Check Out:</strong>
+					</div>
+					<div class="col-md-8">
+						{{results.checkout | date}}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<strong>Total</strong>
+					</div>
+					<div class="col-md-8">
+						${{results.total}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>
+
+

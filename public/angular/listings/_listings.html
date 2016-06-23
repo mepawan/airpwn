@@ -1,0 +1,26 @@
+<ng-include src="'angular/_shared/_top-nav.html'"></ng-include>
+<ng-include src="'angular/_shared/dashboard.html'"></ng-include>
+
+<div class="container page user-listings">
+  <div ng-repeat="listing in listings" class="listings">
+      <div class="panel panel-default" ng-if="listing.status === 'Listed'">
+        <div class="panel-heading">
+          <h3 class="panel-title">Listed</h3>
+        </div>
+        <div class="panel-body">
+          <a class="list-link" ng-href="#/listings/{{listing.id}}">{{listing.title}}</a>
+          <p class="edit-list"><a href="#/listing/edit/{{listing.id}}">Edit Listing</a></p>
+        </div>
+      </div>
+      
+      <div class="panel panel-default" ng-if="listing.status === 'Unlisted'">
+        <div class="panel-heading">
+          <h3 class="panel-title">Not Listed</h3>
+        </div>
+        <div class="panel-body">
+          <a class="list-link" ng-href="#/listings/{{listing.id}}">{{listing.title}}</a>
+          <p class="edit-list"><a href="#/listing/edit/{{listing.id}}">Edit Listing</a></p>
+        </div>
+      </div>
+  </div>
+</div>

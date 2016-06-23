@@ -1,0 +1,87 @@
+<ng-include src="'angular/_shared/_top-nav.html'"></ng-include>
+<ng-include src="'angular/_shared/dashboard.html'"></ng-include>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-7">
+			<h1>Payment</h1>
+			<form name="ccForm" ng-submit="charge()">
+		        <div class="form-group">
+		          <label for="card-number">Card Number</label>
+		          <input type="text" class="form-control" id="cardNumber" cc-number name="ccNumber" ng-model="payment.card.number">
+		        </div>
+
+		        <div class="form-group">
+		          <label for="cvc">CVC</label>
+		          <input type="text" class="form-control" id="cvc" cc-cvc cc-type="ccForm.ccNumber.ccType" name="ccCvc" ng-model="payment.card.cvc">
+		        </div>
+
+		        <div class="form-group">
+		          <label for="card-number">Expiration</label>
+		          <div class="row" cc-exp>
+		            <div class="col-xs-3">
+		              <input placeholder="MM" type="text" class="form-control" cc-exp-month name="ccExpMonth" ng-model="payment.card.exp_month">
+		            </div>
+		            <div class="col-xs-3">
+		              <input placeholder="YY" type="text" class="form-control" cc-exp-year name="ccExpYear" ng-model="payment.card.exp_year">
+		            </div>
+		          </div>
+		        </div>
+
+		        <div>
+		        	<input class="btn btn-success" type="submit" value="Book">
+		        </div>
+		      </form>
+		</div>
+
+
+		<div class="col-md-4 col-md-offset-1">
+			<div class="row">
+				<div class="col-md-3">
+					<a href="#/user/{{result.host_id}}">
+						<img class="media-object" style="width: 80px; height: 80px;" src="{{results.avatar" data-holder-rendered="true">
+					</a>
+				</div>
+				<div class="col-md-7">
+					{{results.name}}
+				</div>
+			</div>
+			<div class="row">
+				<h3>Details</h3>
+				<div class="row">
+					<div class="col-md-3">
+						<strong>Address:</strong>
+					</div>
+					<div class="col-md-8">
+						{{results.address}}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<strong>Check In: </strong>
+					</div>
+					<div class="col-md-8">
+						{{results.checkin}}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<strong>Check Out:</strong>
+					</div>
+					<div class="col-md-8">
+						{{results.checkout}}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<strong>Total</strong>
+					</div>
+					<div class="col-md-8">
+						${{results.total}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,219 @@
+/* global */
+
+body {
+	font-family: 'Roboto';
+}
+.page {
+	min-height: 400px;
+}
+
+/* top navigation */
+
+.navbar-default {
+	background-color: #143460;
+	height: 83px;
+	color: white;
+	border: none;
+	border-radius: 0;
+	z-index: 9;
+}
+
+.navbar-default .navbar-nav>li>a {
+	color: white;
+	line-height: 38px;
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+	color: white;
+}
+
+.navbar-brand {
+	padding: 5px 15px;
+}
+
+.navbar-form {
+	margin-top: 17px;
+}
+
+.collapse.in {
+	background-color: #143460;
+	z-index: 999;
+}
+
+/* dashboard */
+
+.navbar-dashboard {
+	margin-top: -20px;
+	border-bottom: 1px solid #143460;
+}
+
+
+/* home page */
+
+.landing-pg {
+	background: url('http://mvp.ummaspot.com/wp-content/uploads/2014/11/lakemi21.jpg') no-repeat;
+	height: 500px;
+	margin-top: -20px;
+	background-position-y: -50px;
+}
+
+.landing-pg h1 {
+	color: white;
+	text-align: center;
+	padding-top: 2em;
+	font-size: 50px;
+}
+
+.landing-pg p {
+	color: white;
+	text-align: center;
+	font-size: 22px;
+}
+
+.form-bg {
+	color: white;
+	padding-top: 50px;
+}
+
+.form-bg .btn-search {
+	margin-top: 25px;
+	padding: 6px 25px;
+	color: white;
+	background-color: #087a5c;
+	border-color: #087a5c;
+}
+
+/* Search page */
+
+.search-results {
+  background-color: rgb(239, 239, 239);
+  min-height: 400px;
+}
+.search-results .listing-price {
+  	    position: absolute;
+        top: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 100px 100px 0;
+        border-color: transparent rgba(220, 187, 115, 0.86) transparent transparent;
+        font-size: 22px;
+        right: 16px;
+}
+
+
+.search-results .listing-price  span {
+          position: absolute;
+          right: -90px;
+          top: 13px;
+          color: white;
+        
+}
+
+.listing-thumbnail {
+	cursor: pointer;
+}
+
+.search-results .listing-price .thumbnail {
+  	position: relative;
+  	border: none;
+    padding: 0;
+  	border-radius: none;
+    background-color: rgba(255, 255, 255, 0.31);
+}
+
+.search-results .listing-price  .caption {
+      padding: 5px 0 0 5px;
+}
+
+.search-results .listing-price  .room-type {
+      color: #bbbbbb;
+      margin-top: -10px;
+}
+
+.search-filter {
+	padding-bottom: 20px;
+}
+
+.search-filter .list-inline .btn {
+	margin-top: 20px;
+}
+
+
+/* add listings */
+
+section#photos {
+	margin-top: 15px;
+}
+
+#direct_upload {
+	padding: 10px;
+}
+
+section#photos .listings-photos li span {
+	position: absolute;
+	top: 0px;
+	right: 2px;
+	font-size: 16px;
+
+}
+
+section#photos .listings-photos li {
+	display: inline-block;
+	list-style: none;
+	padding: 20px;
+	border: 1px solid rgb(211, 211, 211);
+	position: relative;
+	margin-right: 15px;
+}
+
+
+ul.listings-photos {
+	margin-top: 15px;
+	padding-left: 0;
+}
+
+/* inbox */
+
+.chat-form .btn {
+	float: left;
+	margin-right: 10px;
+}
+
+.chat-form .pull-right {
+	width: 45%;
+	margin-top: 10px;
+}
+
+.chat-name {
+	display: block;
+}
+
+.chat-inbox {
+	border-bottom: 1px solid #ddd;
+	padding: 1em 0;
+}
+
+/* user profile */
+
+.user-avatar {
+	max-height: 250px;
+	max-width: 250px;
+}
+
+/*misc*/
+
+.fc-toolbar h2 {
+	font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+

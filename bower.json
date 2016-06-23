@@ -1,0 +1,30 @@
+{
+  "name": "ummaspot",
+  "version": "0.0.1",
+  "authors": [
+    "nikollaf <franc.nikolla@gmail.com>"
+  ],
+  "description": "Muslims hosting other Muslims",
+  "homepage": "ummaspot.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "latest",
+    "angular-ui-router": "latest",
+    "bootstrap": "latest",
+    "angular-bootstrap": "latest",
+    "angularjs-slider": "latest",
+    "restangular": "latest",
+    "satellizer": "latest",
+    "angular-ui-calendar": "latest",
+    "ng-file-upload": "2.2.x",
+    "cloudinary_ng": ">=0.1.1",
+    "angular-stripe": "~4.2.8",
+    "angular-stripe": "latest"
+  }
+}

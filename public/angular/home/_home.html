@@ -1,0 +1,40 @@
+<ng-include src="'angular/_shared/_top-nav.html'"></ng-include>
+<div ng-if="isAuthenticated()">
+    <ng-include src="'angular/_shared/dashboard.html'"></ng-include>
+</div>
+
+<div class="landing-pg">      
+
+     <div class="message">
+        <h1>FRIENDLY MUSLIM HOME SHARING</h1>
+        <p>Your platform to experience Muslim hospitality</p>
+     </div>
+    
+    <div class="form-bg">
+      <div class="container">
+          <form class="row" ng-submit="search(loc, checkin, checkout)">
+            <div class="col-md-5 col-sm-3 no-pad">
+              <label for="exampleInputEmail3">Select City</label>
+              <input type="input" required="required" class="form-control" id="exampleInputEmail3" ng-model="loc" placeholder="Enter city">
+            </div>
+            <div class="col-md-2 col-sm-2 no-pad">
+              <label for="exampleInputPassword3">Arriving</label>
+              <p class="input-group">
+                    <input type="text" class="form-control" ng-click="open($event, 'opened1')" min-date="DATE_TODAY" datepicker-popup="{{format}}" ng-model="checkin" is-open="opened1" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              </p>
+            </div>
+            <div class="col-md-2 col-sm-2 no-pad">
+              <label for="exampleInputPassword3">Departing</label>
+             <p class="input-group">
+                   <input type="text" class="form-control" ng-click="open($event,'opened2')" min-date="checkin" datepicker-popup="{{format}}" ng-model="checkout" is-open="opened2" min-date="minDate" placeholder="Check out" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+             </p>
+            </div>
+
+            <div class="col-md-2 col-sm-2 col-xs-12 no-pad">
+              <button type="submit" class="btn btn-default btn-search">Search</button>
+            </div>
+          </form>
+        </div>
+    </div>
+</div>
+

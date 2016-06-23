@@ -1,0 +1,94 @@
+<ng-include src="'angular/_shared/_top-nav.html'"></ng-include>
+
+<div class="container page room-page" ng-if="list.status == 'Listed'">
+	<!-- Room Image -->
+	<section class="row">
+		<div class="col-md-7 col-lg-8">
+			<carousel>
+		      <slide ng-repeat="slide in list.images">
+		        <img ng-src="{{slide.url}}" style="margin:auto;">
+		      </slide>
+		    </carousel>
+		</div>
+		<!-- Booking -->
+		<div class="col-md-4 book-info">
+			<span class="location">{{list.location}}</span>
+			<h2>{{list.title}}</h2>
+			
+			<div class="row">
+				<div class="col-xs-1">
+					{{list.room_type}}
+				</div>
+			</div>
+			<div class="row price">
+				<div class="col-md-2 pull-left">
+					{{list.price_cents}}
+				</div>
+				<div class="col-md-5 pull-right">
+					Per Night
+				</div>
+			</div>
+			<div class="row">
+			        <div class="col-md-6">
+			        	<h5>Check In</h5>
+			            <p class="input-group">
+			              <input type="text" class="form-control" ng-click="open($event, 'opened1')" datepicker-popup="{{format}}" ng-model="checkin" is-open="opened1" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+			         
+			            </p>
+			        </div>
+			        <div class="col-md-6">
+			        	<h5>Check Out</h5>
+			            <p class="input-group">
+			              <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="checkout" is-open="opened2" datepicker-options="dateOptions" ng-click="open($event, 'opened2')" date-disabled="disabled(date, mode)" min-date="checkin" ng-required="true" close-text="Close" />
+			       
+			            </p>
+			        </div>
+			  </div>
+			  <div class="row">
+			  	<div class="col-md-12">
+			  		<button ng-if="!isAuthenticated()" class="btn btn-lg btn-success" ng-click="loginModal('sm')">Request to Book ${{getTotalPrice() | number}}</button>
+					<!-- Logged In -->
+			  		<button ng-if="isAuthenticated()" class="btn btn-lg btn-success" ng-click="book()">Request to Book ${{getTotalPrice() | number}}</button>
+			  	</div>
+			  </div>
+		</div>
+	</section>
+	<!-- Room Description -->
+	<section class="row description">
+		<div class="col-md-6">
+			<h4>Summary</h4>
+			<p>{{list.summary}}</p>
+		</div>
+		<div class="col-md-6">
+			<h4>Features</h4>
+			<div class="row">
+				<div class="col-sm-1 features" ng-repeat="ameneties in list.ameneties">
+					{{ameneties}}
+				</div>
+			</div>
+		
+		</div>
+	</section>
+	<!-- Listing Review -->
+	<section class="row">
+		<h4 class="center-text">Reviews</h4>
+		<div ng-repeat="review in list.reviews">
+			<div class="media">
+			  <div class="media-left">
+			    <a href="#">
+			      <img class="media-object" src="..." alt="...">
+			    </a>
+			  </div>
+			  <div class="media-body">
+			    {{review.comment}}
+			  </div>
+			</div>
+		</div>
+	</section>
+</div>
+
+<div class="container page" ng-if="list.status == 'Unlisted'">
+	<div class="alert alert-danger">
+		This listing is no longer available. Please try another place.
+	</div>
+</div>
